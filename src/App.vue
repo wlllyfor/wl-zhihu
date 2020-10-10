@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <Header :user="userData" />
     <column-list :list="list" />
   </div>
 </template>
@@ -8,6 +9,13 @@
 import { defineComponent } from 'vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ColumnList, { ColumnProps } from './components/ColumnList/index.vue'
+import Header, { HeaderProps } from './components/Header/index.vue'
+
+const userData: HeaderProps = {
+  id: 1,
+  name: 'wanglin',
+  isLogin: true
+}
 
 const testData: ColumnProps[] = [
   {
@@ -51,11 +59,13 @@ const testData: ColumnProps[] = [
 export default defineComponent({
   name: 'App',
   components: {
-    ColumnList
+    ColumnList,
+    Header
   },
   setup () {
     return {
-      list: testData
+      list: testData,
+      userData: userData
     }
   }
 })
